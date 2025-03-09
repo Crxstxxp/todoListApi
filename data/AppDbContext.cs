@@ -8,5 +8,7 @@ namespace todoListApi.data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
+        public DbSet<Tasks> Tasks { get; set; }
+
     }
 }
