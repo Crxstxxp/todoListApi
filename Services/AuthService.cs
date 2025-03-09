@@ -58,10 +58,12 @@ namespace todoListApi.Services
         public async Task<AuthenticationResult> Login(LoginRequest request)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
+
             if (user == null)
                 return new AuthenticationResult { Errors = ["Credenciales incorrectas"] };
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
+            
             if (!result.Succeeded)
                 return new AuthenticationResult { Errors = ["Credenciales incorrectas"] };
 
