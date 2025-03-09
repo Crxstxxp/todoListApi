@@ -30,7 +30,7 @@ namespace todoListApi.Services
             return task == null ? null : _mapper.Map<TaskResponse>(task);
         }
 
-        public async Task<TaskResponse> CreateTask(TaskRequest data, string userId)
+        public async Task<TaskResponse> CreateTask(string userId, Task data)
         {
             var task = _mapper.Map<Tasks>(data);
             task.UserId = userId;
@@ -41,7 +41,7 @@ namespace todoListApi.Services
             return _mapper.Map<TaskResponse>(task);
         }
 
-        public async Task<TaskResponse?> UpdateTask(int taskId, TaskRequest data)
+        public async Task<TaskResponse?> UpdateTask(int taskId, Task data)
         {
             var task = await _context.Tasks.FindAsync(taskId);
             if (task == null) return null;
@@ -63,19 +63,5 @@ namespace todoListApi.Services
             return _mapper.Map<TaskResponse>(task);
         }
 
-        public Task<TaskResponse> CreateTask(string userId, Task task)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<TaskResponse?> UpdateTask(int taskId, Task task)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<TaskResponse?> DeleteTask(string userId, int taskId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

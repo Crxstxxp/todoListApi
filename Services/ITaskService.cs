@@ -8,6 +8,6 @@ namespace todoListApi.Services
         Task<TaskResponse?> GetTaskById(int taskId);
         Task<TaskResponse> CreateTask(string userId, Task task);
         Task<TaskResponse?> UpdateTask(int taskId, Task task);
-        Task<TaskResponse?> DeleteTask(string userId, int taskId);
+        Task<TaskResponse?> DeleteTask(int taskId);
     }
 }

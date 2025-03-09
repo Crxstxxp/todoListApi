@@ -20,6 +20,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<TaskService>();
 
 builder.Services.AddIdentity<Users, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
