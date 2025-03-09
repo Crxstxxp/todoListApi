@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using todoListApi.Models;
+using AutoMapper;
+using todoListApi.DTOs;
+using todoListApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +17,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
 );
+
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<AuthService>();
 
 builder.Services.AddIdentity<Users, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
