@@ -30,7 +30,7 @@ namespace todoListApi.Services
             return task == null ? null : _mapper.Map<TaskResponse>(task);
         }
 
-        public async Task<TaskResponse> CreateTask(string userId, Task data)
+        public async Task<TaskResponse> CreateTask(string userId, TaskRequest data)
         {
             var task = _mapper.Map<Tasks>(data);
             task.UserId = userId;
@@ -62,6 +62,5 @@ namespace todoListApi.Services
 
             return _mapper.Map<TaskResponse>(task);
         }
-
     }
 }
